@@ -3,3 +3,37 @@ title: "Bergman Homework 5"
 author: "Kaitlyn Bergman"
 format: html
 ---
+
+```{r}
+library(tidyverse)
+```
+```{r}
+#directory <- "C:\\Users\\cpgl0052\\Dropbox\\Research\\delong maze\\"
+here::i_am("analysis/Bergman_Homework_5.qmd")
+library(here)
+d <- read.csv(here("data/delong maze 40Ss.csv"),
+              header = 0, sep = ",", comment.char = "#", strip.white = T,
+              col.names = c("Index","Time","Counter","Hash","Owner","Controller","Item","Element","Type","Group","FieldName","Value","WordNum","Word","Alt","WordOn","CorrWord","RT","Sent","TotalTime","Question","Resp","Acc","RespRT"))
+```
+
+
+
+
+```{r}
+#| warning: false
+library(tidyverse)
+```
+
+## Introduce the prediction, background stuff, hypothesis 
+
+```{r}
+#This is to run the statistical code
+#install.packages("lm4", type = "source")
+```
+
+## Codebook/Data Dictionary
+
+These are the variables in the raw data.
+
+## Importing Data
+
