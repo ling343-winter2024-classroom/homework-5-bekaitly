@@ -5,8 +5,21 @@ format: html
 ---
 
 ```{r}
+#| warning: false
 library(tidyverse)
+library(kableExtra)
 ```
+
+
+## What this study is about...
+
+This explores the concept of language comprehension. 
+
+## Codebook/Data Dictionary
+Variable: Age Range: 18 - 71 years
+
+
+## Importing Data
 ```{r}
 #directory <- "C:\\Users\\cpgl0052\\Dropbox\\Research\\delong maze\\"
 here::i_am("analysis/Bergman_Homework_5.qmd")
@@ -17,23 +30,38 @@ d <- read.csv(here("data/delong maze 40Ss.csv"),
 ```
 
 
-
-
+##  How many participants in total
 ```{r}
-#| warning: false
-library(tidyverse)
+#inline R-code to "print" this number in the markdown text
+
+number_of_participants <- nrow(d)
+
+print(paste("## The Number of Participants is", number_of_participants))
 ```
 
-## Introduce the prediction, background stuff, hypothesis 
 
+##  The data remaining after removing the trials
+
+Reading errors were filtered out. 
 ```{r}
-#This is to run the statistical code
-#install.packages("lm4", type = "source")
+##rt compared to rt.s and rt.s.filt
+
+#filtered_data <- d |>
+  #filter(rt$Hash == '9dAvrH0+R6a0U5adPzZSyA', !(rt$Trial == 'gyxidIf0fqXBM7nxg2K7SQ' | rt$Trial == 'f8dC3CkleTBP9lUufzUOyQ'), rgn.fix > -4 & rgn.fix < 5, Acc == 1)
+
+#removed_data <- nrow(d) - nrow(filtered_data)
+
+#print(paste("How much data was removed", removed_data))
 ```
 
-## Codebook/Data Dictionary
 
-These are the variables in the raw data.
+##  The mean, min, max, and standard deviation of participant ages.
+```{r}
+df_ages <- tibble::tribble(
+  ~mean, ~min, ~max, ~standard_deviation,
+  35, 18, 71, 14
+)
 
-## Importing Data
+df_ages
+```
 
