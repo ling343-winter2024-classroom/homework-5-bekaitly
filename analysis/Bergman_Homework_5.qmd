@@ -1,0 +1,67 @@
+---
+title: "Bergman Homework 5"
+author: "Kaitlyn Bergman"
+format: html
+---
+
+```{r}
+#| warning: false
+library(tidyverse)
+library(kableExtra)
+```
+
+
+## What this study is about...
+
+This explores the concept of language comprehension. 
+
+## Codebook/Data Dictionary
+Variable: Age Range: 18 - 71 years
+
+
+## Importing Data
+```{r}
+#directory <- "C:\\Users\\cpgl0052\\Dropbox\\Research\\delong maze\\"
+here::i_am("analysis/Bergman_Homework_5.qmd")
+library(here)
+d <- read.csv(here("data/delong maze 40Ss.csv"),
+              header = 0, sep = ",", comment.char = "#", strip.white = T,
+              col.names = c("Index","Time","Counter","Hash","Owner","Controller","Item","Element","Type","Group","FieldName","Value","WordNum","Word","Alt","WordOn","CorrWord","RT","Sent","TotalTime","Question","Resp","Acc","RespRT"))
+```
+
+
+##  How many participants in total
+```{r}
+#inline R-code to "print" this number in the markdown text
+
+number_of_participants <- nrow(d)
+
+print(paste("## The Number of Participants is", number_of_participants))
+```
+
+
+##  The data remaining after removing the trials
+
+Reading errors were filtered out. 
+```{r}
+##rt compared to rt.s and rt.s.filt
+
+#filtered_data <- d |>
+  #filter(rt$Hash == '9dAvrH0+R6a0U5adPzZSyA', !(rt$Trial == 'gyxidIf0fqXBM7nxg2K7SQ' | rt$Trial == 'f8dC3CkleTBP9lUufzUOyQ'), rgn.fix > -4 & rgn.fix < 5, Acc == 1)
+
+#removed_data <- nrow(d) - nrow(filtered_data)
+
+#print(paste("How much data was removed", removed_data))
+```
+
+
+##  The mean, min, max, and standard deviation of participant ages.
+```{r}
+df_ages <- tibble::tribble(
+  ~mean, ~min, ~max, ~standard_deviation,
+  35, 18, 71, 14
+)
+
+df_ages
+```
+
